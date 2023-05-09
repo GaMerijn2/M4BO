@@ -25,6 +25,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public TextMeshProUGUI healthDisplay;
 
+    //public GameObject maincamera;
+    //public GameObject aimcamera;
+
 
 
     // Update is called once per frame
@@ -45,6 +48,22 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Application.Quit();
         }
+
+
+        /*
+        if(Input.GetKey(KeyCode.K)) 
+        {
+            maincamera.SetActive(false);
+            aimcamera.SetActive(true);
+        }
+        else
+        {
+            maincamera.SetActive(true);
+            aimcamera.SetActive(false);
+        }
+        */
+
+
 
 
 
