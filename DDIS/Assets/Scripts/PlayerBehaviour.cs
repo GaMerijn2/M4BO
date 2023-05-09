@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -22,11 +23,18 @@ public class PlayerBehaviour : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     float turnSmoothVelocity;
 
+    public TextMeshProUGUI healthDisplay;
+
+
 
     // Update is called once per frame
     void Update()
     {
+        float currentHealth = GameManager.gameManager.playerHealth.Health;
+        float currentMaxHealth = GameManager.gameManager.playerHealth.MaxHealth;
+
         Cursor.lockState = CursorLockMode.Locked;
+
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -37,6 +45,27 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Application.Quit();
         }
+
+
+
+        if (healthDisplay != null)
+        {
+            healthDisplay.SetText(currentHealth + " / " + currentMaxHealth);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            PlayerTakeDmg(20);
+            Debug.Log("PlayerHealth: " + GameManager.gameManager.playerHealth.Health.ToString());
+        }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            PlayerHeal(25);
+            Debug.Log("PlayerHealth: " + GameManager.gameManager.playerHealth.Health.ToString());
+        }
+
+
+
 
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
@@ -70,4 +99,18 @@ public class PlayerBehaviour : MonoBehaviour
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
         }
     }
+    private void PlayerTakeDmg(int dmg)
+    {
+        GameManager.gameManager.playerHealth.DmgUnit(dmg);
+    }
+    private void PlayerHeal(int healing)
+    {
+        GameManager.gameManager.playerHealth.HealUnit(healing);
+    }
+    public void DestroyUnit()
+    {
+        Destroy(gameObject);
+
+    }
+
 }
