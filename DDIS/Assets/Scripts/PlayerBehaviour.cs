@@ -39,6 +39,7 @@ public class PlayerBehaviour : MonoBehaviour
     //camers for ADS, not working yet
     public GameObject maincamera;
     public GameObject aimcamera;
+    public GameObject cincamera;
 
     // Update is called once per frame
     void Update()
@@ -47,6 +48,7 @@ public class PlayerBehaviour : MonoBehaviour
         Hp();
         PlayerMovement();
         MouseMovement();
+        CamMovement();
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -156,6 +158,20 @@ public class PlayerBehaviour : MonoBehaviour
             aimcamera.SetActive(false);
         }
             */
+    }
+    private void CamMovement()
+    {
+        if (Input.GetKeyDown(KeyCode.L)) 
+        {
+            cincamera.SetActive(true);
+            maincamera.SetActive(false);
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            cincamera.SetActive(false);
+            maincamera.SetActive(true);
+        }
+
     }
 
 }
