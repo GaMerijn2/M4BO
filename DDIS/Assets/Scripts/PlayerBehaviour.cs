@@ -130,6 +130,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void MouseMovement()
     {
+        /*
         Vector2 screenCentre = new Vector2(Screen.width / 2, Screen.height / 2);
         Ray ray = Camera.main.ScreenPointToRay(screenCentre);
 
@@ -138,7 +139,7 @@ public class PlayerBehaviour : MonoBehaviour
             aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
         }
 
-        /*
+        
         if (Input.GetMouseButton(1))
         {
             Debug.Log("RMB");
@@ -146,21 +147,31 @@ public class PlayerBehaviour : MonoBehaviour
             maincamera.SetActive(false);
             aimcamera.SetActive(true);
 
-            
+
             float mouseXValue = Input.GetAxis("Mouse X");
             float mouseYValue = Input.GetAxis("Mouse Y");
             transform.rotation *= Quaternion.Euler(mouseXValue * rotSpeed * Vector3.up);
-            
+        }
+        */
+
+        if (Input.GetMouseButton(2))
+        {
+            cincamera.SetActive(true);
+            maincamera.SetActive(false);
         }
         else
         {
             maincamera.SetActive(true);
-            aimcamera.SetActive(false);
-        }
-            */
+            cincamera.SetActive(false);
+        }      
+
+
+
     }
+    
     private void CamMovement()
     {
+        /*
         if (Input.GetKeyDown(KeyCode.L)) 
         {
             cincamera.SetActive(true);
@@ -171,7 +182,8 @@ public class PlayerBehaviour : MonoBehaviour
             cincamera.SetActive(false);
             maincamera.SetActive(true);
         }
-
+*/
     }
+
 
 }
