@@ -161,7 +161,7 @@ public class PlayerBehaviour : MonoBehaviour
             transform.rotation *= Quaternion.Euler(mouseXValue * rotSpeed * Vector3.up);
         }
         */
-
+        /*
         if (Input.GetMouseButton(2))
         {
             cincamera.SetActive(true);
@@ -172,6 +172,7 @@ public class PlayerBehaviour : MonoBehaviour
             maincamera.SetActive(true);
             cincamera.SetActive(false);
         }
+        */
 
 
 

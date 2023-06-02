@@ -50,7 +50,7 @@ public class movingP : MonoBehaviour
     }
 
     private void OnCollisionExit(Collision collision)
-    {
+    {//
         Debug.Log("No Touch platfrom");
         //collision.collider.transform.SetParent(null);
     }
