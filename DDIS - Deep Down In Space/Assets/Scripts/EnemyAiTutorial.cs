@@ -31,7 +31,7 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.Find("PlayerObj").transform;
         agent = GetComponent<NavMeshAgent>();
-        health = 100;
+        health = 100;  
     }
 
     private void Update()

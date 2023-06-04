@@ -7,6 +7,7 @@ public class SwordFight : MonoBehaviour
     public LayerMask targetLayer;
     public Transform attackPoint;
     public Animator animator;
+
     [SerializeField] private GameObject swordHitBox;
 
     private bool isAttacking = false;
@@ -42,10 +43,6 @@ public class SwordFight : MonoBehaviour
             animator.SetTrigger("SwordIdle");
             // Debug.Log("disable hitbox");
         }
-
-
-
-
     }
 
     void PerformAttack()
@@ -58,14 +55,8 @@ public class SwordFight : MonoBehaviour
             {
                 // Apply damage to the enemy
                 Debug.Log("Hit enemy");
-
-            }
-            else
-            {
-
             }
         }
-
         isAttacking = false;
     }
 
@@ -73,7 +64,6 @@ public class SwordFight : MonoBehaviour
     {
         if (attackPoint == null)
             return;
-
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }
