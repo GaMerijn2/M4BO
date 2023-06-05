@@ -1726,7 +1726,7 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
-  health: 0
+  health: 1000
   walkPoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 1.3
@@ -10101,7 +10101,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959712617860555542}
-  m_LocalRotation: {x: 0.18047853, y: -0.000000033847666, z: 0.0000000062107643, w: 0.9835789}
+  m_LocalRotation: {x: 0.18047853, y: 0.000000033847666, z: -0.0000000062107643, w: 0.9835789}
   m_LocalPosition: {x: 0, y: 1.217, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10167,7 +10167,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959712617974777160}
-  m_LocalRotation: {x: 0.19248308, y: -0.000000008442314, z: 0.0000000016559688, w: 0.9813003}
+  m_LocalRotation: {x: 0.19248308, y: 0.000000008442313, z: -0.0000000016559685, w: 0.9813003}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10372,7 +10372,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959712618575936086}
-  m_LocalRotation: {x: 0.18047853, y: -0.000000008461917, z: 0.0000000015526913, w: 0.9835789}
+  m_LocalRotation: {x: 0.18047853, y: 0.0000000084619165, z: -0.0000000015526912,
+    w: 0.9835789}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10495,7 +10496,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3959712618694097473}
-  m_LocalRotation: {x: 0.15501437, y: -0.000000016998394, z: 0.0000000026672362, w: 0.98791224}
+  m_LocalRotation: {x: 0.15501437, y: 0.000000016998394, z: -0.0000000026672362, w: 0.98791224}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
