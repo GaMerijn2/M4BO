@@ -182,7 +182,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void CamMovement()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.L)) 
         {
             cincamera.SetActive(true);
@@ -193,6 +193,5 @@ public class PlayerBehaviour : MonoBehaviour
             cincamera.SetActive(false);
             maincamera.SetActive(true);
         }
-*/
     }
 }
