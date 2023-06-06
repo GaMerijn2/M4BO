@@ -7,10 +7,11 @@ public class CheckHitBox : MonoBehaviour
     private void OnTriggerEnter(Collider col)
     {
         col.gameObject.CompareTag("Enemy");
+        Debug.Log(col.gameObject.name);
 
-        if (col.gameObject.name == "Enemy")
+        if (col.gameObject.name == "Roomba")
         {
-            Debug.Log(col.gameObject.name);
+            Debug.Log("Enemy hit");
             col.gameObject.GetComponent<EnemyAiTutorial>().EnemyTakeDmg(20);
             Debug.Log(col.gameObject.GetComponent<EnemyAiTutorial>().health);
         }
