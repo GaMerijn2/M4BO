@@ -5,6 +5,7 @@ using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 //using UnityEngine.UIElements;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -52,7 +53,9 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-            Application.Quit();
+             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            Cursor.lockState = CursorLockMode.None;
+
         }
     }
     private void Hp()
