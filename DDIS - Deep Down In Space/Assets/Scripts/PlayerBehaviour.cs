@@ -83,7 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.Log("PlayerHealth: " + GameManager.gameManager.playerHealth.Health.ToString());
         }
     }
-    private void PlayerTakeDmg(int dmg)
+    public void PlayerTakeDmg(int dmg)
     {
         GameManager.gameManager.playerHealth.DmgUnit(dmg);
     }
