@@ -1,0 +1,294 @@
+fileFormatVersion: 2
+guid: 33a8ea3877b892b489845eff758bdde8
+ModelImporter:
+  serializedVersion: 21202
+  internalIDToNameTable:
+  - first:
+      74: -3081407622872403040
+    second: Mushroom 1|CylinderAction
+  - first:
+      74: -2195859621688603730
+    second: Mushroom 1|CylinderAction.001
+  - first:
+      74: 488158544648773949
+    second: Mushroom 1|Mushroom 1Action
+  - first:
+      74: -1411080893623095426
+    second: Mushroom 1|Mushroom 2 -1Action
+  - first:
+      74: 905822841306033985
+    second: Mushroom 1|Mushroom 4 - 2Action
+  - first:
+      74: -7792386215427245594
+    second: Mushroom 1|Mushroom 4 -3Action
+  - first:
+      74: -7178160190626917466
+    second: Mushroom 1|Mushroom 5 -2Action
+  - first:
+      74: 2305288953801772564
+    second: Mushroom 1|Sphere.013Action
+  - first:
+      74: -8974152652101886557
+    second: Mushroom 1|Sphere.013Action.001
+  - first:
+      74: -2841440697843506690
+    second: Mushroom 1|Sphere.013Action.002
+  - first:
+      74: -6450594624127338254
+    second: Mushroom 1|Sphere.013Action.003
+  - first:
+      74: 3966029004852233926
+    second: Mushroom 1|Sphere.013Action.004
+  - first:
+      74: 2271213759858619857
+    second: Mushroom 1|Sphere.013Action.005
+  - first:
+      74: 4602465131434619847
+    second: Mushroom 1|Sphere.013Action.006
+  - first:
+      74: -5669558539285889474
+    second: Mushroom 1|Sphere.013Action.007
+  - first:
+      74: -3728857891391519073
+    second: Mushroom 1|Sphere.013Action.008
+  - first:
+      74: 5343784679559877463
+    second: Mushroom 1|Sphere.013Action.009
+  - first:
+      74: 8062936218904812535
+    second: Mushroom 1|Sphere.013Action.010
+  - first:
+      74: 2816170158963050279
+    second: Mushroom 1|Sphere.013Action.011
+  - first:
+      74: -891662275966510663
+    second: Mushroom 1|Sphere.013Action.012
+  - first:
+      74: 7091173106130316400
+    second: Mushroom 1|Sphere.013Action.013
+  - first:
+      74: 8406858070786622329
+    second: Mushroom 1|Sphere.013Action.014
+  - first:
+      74: -4376827444753928241
+    second: Mushroom 1|Sphere.013Action.015
+  - first:
+      74: 1468005119040992298
+    second: Mushroom 1|Sphere.013Action.016
+  - first:
+      74: 3598055284649728640
+    second: Mushroom 1|Sphere.013Action.017
+  - first:
+      74: 4025960408107519033
+    second: Mushroom 1|Sphere.013Action.018
+  - first:
+      74: 3727724998565339628
+    second: Mushroom 1|Sphere.013Action.019
+  - first:
+      74: 4775607663656941687
+    second: Mushroom 1|Sphere.013Action.020
+  - first:
+      74: 4124978837462791139
+    second: Mushroom 1|Sphere.013Action.021
+  - first:
+      74: 621559228074141012
+    second: Mushroom 1|Sphere.013Action.022
+  - first:
+      74: 5762964088747842223
+    second: Mushroom 1|Sphere.013Action.023
+  - first:
+      74: -5943487496053450935
+    second: Mushroom 1|Sphere.013Action.024
+  - first:
+      74: -6042104333616411362
+    second: Mushroom 1|Sphere.013Action.025
+  - first:
+      74: 2186156930186175855
+    second: Mushroom 1|Sphere.013Action.026
+  - first:
+      74: 2525022866806388977
+    second: Mushroom 1|Sphere.013Action.027
+  - first:
+      74: 2082423274743966888
+    second: Mushroom 1|Sphere.013Action.028
+  - first:
+      74: 139924108176990327
+    second: Mushroom 1|Sphere.013Action.029
+  - first:
+      74: 965616373417419587
+    second: Mushroom 1|Sphere.013Action.030
+  - first:
+      74: -2557688186677993696
+    second: Mushroom 1|Sphere.013Action.031
+  - first:
+      74: 7420210590038052040
+    second: Mushroom 1|Sphere.013Action.032
+  - first:
+      74: -2560784241002854777
+    second: Mushroom 1|Sphere.013Action.033
+  - first:
+      74: -2441002908084732209
+    second: Mushroom 1|Sphere.013Action.041
+  - first:
+      74: 5107202145741312335
+    second: Mushroom 1|Sphere.013Action.042
+  - first:
+      74: 3257552069478628877
+    second: Mushroom 1|Sphere.013Action.043
+  - first:
+      74: 2856494760932088375
+    second: Mushroom 1|Sphere.013Action.044
+  - first:
+      74: -3014396345013713799
+    second: Mushroom 1|Sphere.013Action.045
+  - first:
+      74: -7788164183084014593
+    second: Mushroom 1|Sphere.013Action.046
+  - first:
+      74: -578097106146791632
+    second: Mushroom 1|Sphere.013Action.047
+  - first:
+      74: 1114197448059319197
+    second: Mushroom 1|Sphere.013Action.048
+  - first:
+      74: 3127766760440602206
+    second: Mushroom 1|Sphere.013Action.049
+  - first:
+      74: -7610479263120819462
+    second: Mushroom 1|Sphere.013Action.050
+  - first:
+      74: -4982701335273032110
+    second: Mushroom 1|Sphere.013Action.051
+  - first:
+      74: -2756439305031512384
+    second: Mushroom 1|Sphere.013Action.052
+  - first:
+      74: -1565558964717318169
+    second: Mushroom 1|Sphere.047Action
+  - first:
+      74: -841048124267805633
+    second: Mushroom 1|Sphere.048Action
+  - first:
+      74: 414438834866989160
+    second: Mushroom 1|Sphere.048Action.001
+  - first:
+      74: -6173097754234341177
+    second: Mushroom 1|Sphere.048Action.002
+  - first:
+      74: 3355146494852854424
+    second: Mushroom 1|Sphere.048Action.003
+  - first:
+      74: -6664953443818612837
+    second: Mushroom 1|Sphere.048Action.004
+  - first:
+      74: 7550901951770389786
+    second: Mushroom 1|Sphere.048Action.005
+  - first:
+      74: -6592285968350122984
+    second: Mushroom 1|Sphere.048Action.006
+  - first:
+      74: 3395509035409010517
+    second: Mushroom 1|Sphere.048Action.007
+  - first:
+      74: -5900232477663845419
+    second: Mushroom 1|Sphere.056Action
+  externalObjects: {}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 1
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 1
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
