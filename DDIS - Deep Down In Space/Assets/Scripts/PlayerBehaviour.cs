@@ -37,7 +37,14 @@ public class PlayerBehaviour : MonoBehaviour
     public GameObject maincamera;
     public GameObject cincamera;
 
+    public HealthBar healthBar;
+
     // Update is called once per frame
+    private void Start()
+    {
+        healthBar.SetMaxHealth(GameManager.gameManager.playerHealth.MaxHealth);
+
+    }
     void Update()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -86,10 +93,14 @@ public class PlayerBehaviour : MonoBehaviour
     public void PlayerTakeDmg(int dmg)
     {
         GameManager.gameManager.playerHealth.DmgUnit(dmg);
+
+        healthBar.SetHealth(GameManager.gameManager.playerHealth.Health);
     }
     private void PlayerHeal(int healing)
     {
         GameManager.gameManager.playerHealth.HealUnit(healing);
+        healthBar.SetHealth(GameManager.gameManager.playerHealth.Health);
+
     }
     public void DestroyUnit()
     {
