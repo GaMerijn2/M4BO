@@ -83,7 +83,7 @@ public class PlayerBehaviour : MonoBehaviour
             Debug.Log("PlayerHealth: " + GameManager.gameManager.playerHealth.Health.ToString());
         }
     }
-    private void PlayerTakeDmg(int dmg)
+    public void PlayerTakeDmg(int dmg)
     {
         GameManager.gameManager.playerHealth.DmgUnit(dmg);
     }
@@ -182,7 +182,7 @@ public class PlayerBehaviour : MonoBehaviour
     }
     private void CamMovement()
     {
-        /*
+        
         if (Input.GetKeyDown(KeyCode.L)) 
         {
             cincamera.SetActive(true);
@@ -193,6 +193,5 @@ public class PlayerBehaviour : MonoBehaviour
             cincamera.SetActive(false);
             maincamera.SetActive(true);
         }
-*/
     }
 }
