@@ -10,6 +10,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public LayerMask whatIsGround, whatIsPlayer;
 
+    //health
+    //public int maxHealth = 100;
     public int health = 100;
 
     //Patroling
@@ -26,18 +28,25 @@ public class EnemyAiTutorial : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    //HealthBar
+    public HealthBar healthBar;
 
+    private void Start()
+    {
+        //maxHealth = 100;
+        health = 100;
+    }
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-        health = 100;  
+
+      //  healthBar.SetMaxHealth(health);
     }
+
 
     private void Update()
     {
-        float currentHealth = GameManager.gameManager.enemyHealth.Health;
-        float currentMaxHealth = GameManager.gameManager.enemyHealth.MaxHealth;
 
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -116,10 +125,13 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         //GameManager.gameManager.enemyHealth.DmgUnit(dmg);
         health -= dmg;
+        healthBar.SetHealth(health);
     }
     private void EnemyHeal(int healing)
     {
         GameManager.gameManager.enemyHealth.HealUnit(healing);
+        healthBar.SetHealth(health);
+
     }
     public void DestroyUnit()
     {
