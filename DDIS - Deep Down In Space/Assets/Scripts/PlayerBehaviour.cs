@@ -39,6 +39,8 @@ public class PlayerBehaviour : MonoBehaviour
 
     public HealthBar healthBar;
 
+    public bool IsActive;
+
     // Update is called once per frame
     private void Start()
     {
@@ -203,6 +205,19 @@ public class PlayerBehaviour : MonoBehaviour
         {
             cincamera.SetActive(false);
             maincamera.SetActive(true);
+        }
+    }
+    
+
+    public void LockCursor(bool IsActive)
+    {
+        if (IsActive)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else if (IsActive == false) 
+        {
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }
