@@ -26,7 +26,7 @@ public class EnemyAiTutorial : MonoBehaviour
 
     //States
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
+    public bool playerInSightRange, playerInAttackRange, playerIsAlive;
 
     //HealthBar
     public HealthBar healthBar;
@@ -47,6 +47,10 @@ public class EnemyAiTutorial : MonoBehaviour
 
     private void Update()
     {
+        if (player == null)
+        {
+            playerIsAlive = false;
+        }
 
         //Check for sight and attack range
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
@@ -56,12 +60,12 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             Patroling();
         }
-        if (playerInSightRange && !playerInAttackRange)
+        if (playerInSightRange && !playerInAttackRange && !playerIsAlive)
         {
             ChasePlayer();
             transform.LookAt(player);
         }
-        if (playerInAttackRange && playerInSightRange)
+        if (playerInAttackRange && playerInSightRange && !playerIsAlive)
         {
             AttackPlayer();
             transform.LookAt(player);
