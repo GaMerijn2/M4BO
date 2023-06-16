@@ -21,15 +21,16 @@ public class GunScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && alreadyAttacked == false)
         {
-            animator.ResetTrigger("Idle");
-            animator.SetTrigger("Attack");
+            //animator.ResetTrigger("Idle");
+            //animator.SetTrigger("Attack");
+            animator.Play("Sword");
 
             Debug.Log("Shoot");
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
             ///End of attack code
 
-            alreadyAttacked = true;
+            alreadyAttacked = false;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }

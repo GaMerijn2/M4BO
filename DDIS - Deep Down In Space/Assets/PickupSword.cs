@@ -26,11 +26,5 @@ public class PickupSword : MonoBehaviour
                 swordOnPlayer.SetActive(true);
             }
         }
-        else
-        {
-            Pickuptext.SetActive(false);
-
-        }
-
     }
 }
