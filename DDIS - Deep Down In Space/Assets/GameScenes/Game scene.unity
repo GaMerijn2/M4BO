@@ -13358,7 +13358,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721355543592238995}
-  m_LocalRotation: {x: 0.11888437, y: 1e-45, z: -0, w: 0.9929081}
+  m_LocalRotation: {x: 0.11888437, y: -0, z: -0, w: 0.9929081}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -13580,7 +13580,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 721355544047124356}
-  m_LocalRotation: {x: 0.16060515, y: 1e-45, z: -0, w: 0.98701876}
+  m_LocalRotation: {x: 0.16060515, y: -0, z: -0, w: 0.98701876}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -14370,7 +14370,6 @@ GameObject:
   - component: {fileID: 721355545548235305}
   - component: {fileID: 721355545548235311}
   - component: {fileID: 5111735513657247986}
-  - component: {fileID: 4391428198494679030}
   - component: {fileID: 4391428198494678989}
   m_Layer: 6
   m_Name: Player
@@ -25082,7 +25081,7 @@ Animator:
   m_GameObject: {fileID: 1416594902693026029}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0291357ef2a7f994ca4d12a0ac1e87d5, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7faf057e488227447b5ce6720823ee76, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -38179,26 +38178,7 @@ MonoBehaviour:
   cincamera: {fileID: 888617934}
   healthBar: {fileID: 859971486459677902}
   IsActive: 0
---- !u!95 &4391428198494679030
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721355545548235307}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 691f5a444d0c36d4788c01b7db0ee9dc, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  animator: {fileID: 0}
 --- !u!1 &4391428198530507353
 GameObject:
   m_ObjectHideFlags: 0

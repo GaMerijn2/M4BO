@@ -41,6 +41,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public bool IsActive;
 
+    public Animator animator;
+    private Vector2 moveSpeed;
+
     // Update is called once per frame
     private void Start()
     {
@@ -150,6 +153,22 @@ public class PlayerBehaviour : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+
+            moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
+            Debug.Log(moveSpeed);
+            if (moveSpeed.magnitude > 0.1f)
+            {
+                animator.SetTrigger("Walk");
+            }
+            else if (moveSpeed.magnitude == 0f)
+            {
+                animator.SetTrigger("Idle");
+            }
+            else if (moveSpeed.magnitude > 0.2f)
+            {
+                animator.SetTrigger("Run");
+
+            }
         }
     }
     private void MouseMovement()
