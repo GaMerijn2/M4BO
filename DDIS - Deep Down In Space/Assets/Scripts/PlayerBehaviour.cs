@@ -18,6 +18,8 @@ public class PlayerBehaviour : MonoBehaviour
     public float rotSpeed = 5f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
+    private Rigidbody rb;
+    
 
     //movement rotation
     public float turnSmoothTime = 0.1f;
@@ -42,16 +44,24 @@ public class PlayerBehaviour : MonoBehaviour
     public bool IsActive;
 
     public Animator animator;
+    public float movespeed;
     private Vector2 moveSpeed;
+
+
 
     // Update is called once per frame
     private void Start()
     {
         healthBar.SetMaxHealth(GameManager.gameManager.playerHealth.MaxHealth);
+        rb = GetComponent<Rigidbody>();
+
 
     }
     void Update()
     {
+        float movespeed = controller.velocity.magnitude;
+        //Debug.Log(movespeed);
+
         Cursor.lockState = CursorLockMode.Locked;
         Hp();
         PlayerMovement();
@@ -69,6 +79,8 @@ public class PlayerBehaviour : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
 
         }
+        animator.SetFloat("Speed", movespeed);
+
     }
     private void Hp()
     {
@@ -155,19 +167,26 @@ public class PlayerBehaviour : MonoBehaviour
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
             moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
-            Debug.Log(moveSpeed);
-            if (moveSpeed.magnitude > 0.1f)
-            {
-                animator.SetTrigger("Walk");
-            }
-            else if (moveSpeed.magnitude == 0f)
-            {
-                animator.SetTrigger("Idle");
-            }
-            else if (moveSpeed.magnitude > 0.2f)
-            {
-                animator.SetTrigger("Run");
 
+            Debug.Log("float is " + animator.GetFloat("Speed"));
+            if (movespeed < 7)
+            {
+                //animator.SetTrigger("Walk");
+                animator.GetFloat("Speed");
+                //animator.SetFloat("Speed", 1.1);
+
+            }
+            else if (movespeed > 7)
+            {
+                //animator.SetTrigger("Run");
+                animator.GetFloat("Speed");
+                //animator.SetFloat("Speed", 2);
+            }
+            else
+            {
+                //animator.SetTrigger("Idle");
+                animator.GetFloat("Speed");
+                //animator.SetFloat("Speed", 0);
             }
         }
     }
