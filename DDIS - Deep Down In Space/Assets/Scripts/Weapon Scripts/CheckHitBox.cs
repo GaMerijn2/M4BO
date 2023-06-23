@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,12 +11,11 @@ public class CheckHitBox : MonoBehaviour
     {
         col.gameObject.CompareTag("Enemy");
         //Debug.Log(col.gameObject.name);
-
         //enemy check dmg
         if (col.gameObject.tag == "Enemy")
         {
             //Debug.Log("Enemy hit");
-            col.gameObject.GetComponent<EnemyAiTutorial>().EnemyTakeDmg(50);
+            col.gameObject.GetComponent<EnemyAiTutorial>().EnemyTakeDmg(20);
             Debug.Log(col.gameObject.GetComponent<EnemyAiTutorial>().health);
         }
         if (col.gameObject.GetComponent<EnemyAiTutorial>().health <= 0)

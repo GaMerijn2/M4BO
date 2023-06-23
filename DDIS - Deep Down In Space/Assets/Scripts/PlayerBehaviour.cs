@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using static UnityEngine.ParticleSystem;
 //using UnityEngine.UIElements;
 
 public class PlayerBehaviour : MonoBehaviour
@@ -46,6 +47,11 @@ public class PlayerBehaviour : MonoBehaviour
     public Animator animator;
     public float movespeed;
     private Vector2 moveSpeed;
+
+    public ParticleSystem particles;
+
+
+
 
 
 
@@ -116,6 +122,7 @@ public class PlayerBehaviour : MonoBehaviour
     private void PlayerHeal(int healing)
     {
         GameManager.gameManager.playerHealth.HealUnit(healing);
+
         healthBar.SetHealth(GameManager.gameManager.playerHealth.Health);
 
     }
@@ -168,7 +175,7 @@ public class PlayerBehaviour : MonoBehaviour
 
             moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
 
-            Debug.Log("float is " + animator.GetFloat("Speed"));
+            //Debug.Log("float is " + animator.GetFloat("Speed"));
             if (movespeed < 7)
             {
                 //animator.SetTrigger("Walk");
@@ -187,6 +194,16 @@ public class PlayerBehaviour : MonoBehaviour
                 //animator.SetTrigger("Idle");
                 animator.GetFloat("Speed");
                 //animator.SetFloat("Speed", 0);
+            }
+            if (horizontal < 0 || horizontal > 0 && !particles.isPlaying)
+            {
+                particles.Play();
+            }
+
+
+            else if (particles.isPlaying)
+            {
+                particles.Stop();
             }
         }
     }
