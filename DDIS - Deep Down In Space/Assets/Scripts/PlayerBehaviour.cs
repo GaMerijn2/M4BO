@@ -49,8 +49,9 @@ public class PlayerBehaviour : MonoBehaviour
     private Vector2 moveSpeed;
 
     public ParticleSystem particles;
-
-
+    public AudioSource footsteps;
+    public AudioSource jump;
+    public AudioSource land;
 
 
 
@@ -65,13 +66,15 @@ public class PlayerBehaviour : MonoBehaviour
     }
     void Update()
     {
+        moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
+
         float movespeed = controller.velocity.magnitude;
-        //Debug.Log(movespeed);
+        Debug.Log(movespeed);
+       // Debug.Log(movespeed);
 
         Cursor.lockState = CursorLockMode.Locked;
         Hp();
         PlayerMovement();
-        MouseMovement();
         CamMovement();
 
         if (Input.GetKey(KeyCode.LeftControl))
@@ -86,6 +89,24 @@ public class PlayerBehaviour : MonoBehaviour
 
         }
         animator.SetFloat("Speed", movespeed);
+        if (movespeed > 0 && !particles.isPlaying)
+        {
+            particles.Play();
+        }
+        else if (particles.isPlaying)
+        {
+            particles.Stop();
+        }
+        ///*
+        if (movespeed > 0)
+        {
+            footsteps.PlayOneShot(footsteps.clip);
+        }
+        else if (movespeed <= 0)
+        {
+            footsteps.Stop();
+        }
+       // */
 
     }
     private void Hp()
@@ -158,8 +179,11 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
+
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            jump.Play();
         }
+
         
 
         if (direction.magnitude >= 0.1f)
@@ -173,7 +197,6 @@ public class PlayerBehaviour : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
 
-            moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
 
             //Debug.Log("float is " + animator.GetFloat("Speed"));
             if (movespeed < 7)
@@ -195,59 +218,9 @@ public class PlayerBehaviour : MonoBehaviour
                 animator.GetFloat("Speed");
                 //animator.SetFloat("Speed", 0);
             }
-            if (horizontal < 0 || horizontal > 0 && !particles.isPlaying)
-            {
-                particles.Play();
-            }
-
-
-            else if (particles.isPlaying)
-            {
-                particles.Stop();
-            }
         }
     }
-    private void MouseMovement()
-    {
-        /*
-        Vector2 screenCentre = new Vector2(Screen.width / 2, Screen.height / 2);
-        Ray ray = Camera.main.ScreenPointToRay(screenCentre);
-
-        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, aimMask))
-        {
-            aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
-        }
-
-        
-        if (Input.GetMouseButton(1))
-        {
-            Debug.Log("RMB");
-            transform.rotation = cam.transform.rotation;
-            maincamera.SetActive(false);
-            aimcamera.SetActive(true);
-
-
-            float mouseXValue = Input.GetAxis("Mouse X");
-            float mouseYValue = Input.GetAxis("Mouse Y");
-            transform.rotation *= Quaternion.Euler(mouseXValue * rotSpeed * Vector3.up);
-        }
-        */
-        /*
-        if (Input.GetMouseButton(2))
-        {
-            cincamera.SetActive(true);
-            maincamera.SetActive(false);
-        }
-        else
-        {
-            maincamera.SetActive(true);
-            cincamera.SetActive(false);
-        }
-        */
-
-
-
-    }
+    
     private void CamMovement()
     {
         

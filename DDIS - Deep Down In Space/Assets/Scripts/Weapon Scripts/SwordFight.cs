@@ -47,6 +47,7 @@ public class SwordFight : MonoBehaviour
 
     void PerformAttack()
     {
+        /*
         Collider[] hitColliders = Physics.OverlapSphere(attackPoint.position, attackRange, targetLayer);
 
         foreach (Collider collider in hitColliders)
@@ -57,6 +58,7 @@ public class SwordFight : MonoBehaviour
                 Debug.Log("Hit enemy");
             }
         }
+        */
         isAttacking = false;
     }
 

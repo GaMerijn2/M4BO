@@ -18,7 +18,7 @@ public class CheckHitBox : MonoBehaviour
             col.gameObject.GetComponent<EnemyAiTutorial>().EnemyTakeDmg(20);
             Debug.Log(col.gameObject.GetComponent<EnemyAiTutorial>().health);
         }
-        if (col.gameObject.GetComponent<EnemyAiTutorial>().health <= 0)
+        if (col.gameObject.tag == "Enemy" && col.gameObject.GetComponent<EnemyAiTutorial>().health <= 0)
         {
             col.gameObject.GetComponent<EnemyAiTutorial>().DestroyUnit();
             GameManager.gameManager.playerHealth.HealUnit(20);

@@ -12,6 +12,9 @@ public class PickupSword : MonoBehaviour
     public GameObject Pickuptext;
     public static float foundObjects;
     public ParticleSystem particle;
+
+    public AudioSource PickupSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +34,7 @@ public class PickupSword : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 particle.Play();
+                PickupSound.Play();
                 this.gameObject.SetActive(false);
 
                 swordOnPlayer.SetActive(true);

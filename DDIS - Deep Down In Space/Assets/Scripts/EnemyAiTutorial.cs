@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class EnemyAiTutorial : MonoBehaviour
 {
@@ -30,6 +31,10 @@ public class EnemyAiTutorial : MonoBehaviour
 
     //HealthBar
     public HealthBar healthBar;
+
+    //attacks
+    public float attackDamage = 10f;
+    public float attackCooldown = 1f;
 
     private void Start()
     {
@@ -112,8 +117,23 @@ public class EnemyAiTutorial : MonoBehaviour
         if (!alreadyAttacked)
         {
             ///Attack code here
-            Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 32f, ForceMode.Impulse);
+            Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+
+            // Loop through all potential targets
+            foreach (Collider collider in hitColliders)
+            {
+                // Check if the target has a specific tag, such as "Player"
+                if (collider.CompareTag("Player"))
+                {
+                    // Apply damage or trigger desired gameplay effect on the target
+                    collider.gameObject.GetComponent<PlayerBehaviour>().PlayerTakeDmg(5);
+                }
+                if (GameManager.gameManager.playerHealth.Health <= 0)
+                {
+                    Cursor.lockState = CursorLockMode.None;
+                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                }
+            }
             ///End of attack code
 
             alreadyAttacked = true;
@@ -122,6 +142,7 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void ResetAttack()
     {
+       
         alreadyAttacked = false;
     }
 
