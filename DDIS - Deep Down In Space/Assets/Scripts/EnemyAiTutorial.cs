@@ -36,6 +36,8 @@ public class EnemyAiTutorial : MonoBehaviour
     public float attackDamage = 10f;
     public float attackCooldown = 1f;
 
+    public Animator anim;
+
     private void Start()
     {
         //maxHealth = 100;
@@ -50,7 +52,7 @@ public class EnemyAiTutorial : MonoBehaviour
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (player == null)
         {
@@ -118,6 +120,8 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             ///Attack code here
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
+            anim.SetBool("Attacks", true);
+            Debug.Log("set anim");
 
             // Loop through all potential targets
             foreach (Collider collider in hitColliders)
@@ -142,7 +146,9 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void ResetAttack()
     {
-       
+        Debug.Log("reset anim");
+        anim.SetBool("Attacks", false);
+
         alreadyAttacked = false;
     }
 

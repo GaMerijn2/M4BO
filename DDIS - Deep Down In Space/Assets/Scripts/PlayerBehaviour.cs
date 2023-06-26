@@ -20,7 +20,7 @@ public class PlayerBehaviour : MonoBehaviour
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
     private Rigidbody rb;
-    
+
 
     //movement rotation
     public float turnSmoothTime = 0.1f;
@@ -50,8 +50,12 @@ public class PlayerBehaviour : MonoBehaviour
 
     public ParticleSystem particles;
     public AudioSource footsteps;
+    public AudioSource fastFootsteps;
+
     public AudioSource jump;
     public AudioSource land;
+
+    public TMP_Text FoundObjectsText;
 
 
 
@@ -69,8 +73,8 @@ public class PlayerBehaviour : MonoBehaviour
         moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
 
         float movespeed = controller.velocity.magnitude;
-        Debug.Log(movespeed);
-       // Debug.Log(movespeed);
+        //Debug.Log(movespeed);
+        // Debug.Log(movespeed);
 
         Cursor.lockState = CursorLockMode.Locked;
         Hp();
@@ -84,30 +88,39 @@ public class PlayerBehaviour : MonoBehaviour
 
         if (Input.GetKey(KeyCode.Escape))
         {
-             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
             Cursor.lockState = CursorLockMode.None;
 
         }
         animator.SetFloat("Speed", movespeed);
-        if (movespeed > 0 && !particles.isPlaying)
+        if (movespeed > 0 && particles.isPlaying == false)
         {
+            Debug.Log("RunParticle");
             particles.Play();
         }
         else if (particles.isPlaying)
         {
-            particles.Stop();
+           // particles.Stop();
         }
-        ///*
-        if (movespeed > 0)
-        {
-            footsteps.PlayOneShot(footsteps.clip);
-        }
-        else if (movespeed <= 0)
-        {
-            footsteps.Stop();
-        }
-       // */
 
+        if (fastFootsteps.isPlaying == false && footsteps.isPlaying == false && isGrounded)
+        {
+            if (movespeed > 11)
+            {
+                fastFootsteps.PlayOneShot(fastFootsteps.clip);
+
+            }
+            else if (movespeed > 0)
+            {
+                footsteps.PlayOneShot(footsteps.clip);
+
+            }
+        }
+       
+        if (PickupSword.foundObjects <= 6)
+        {
+            FoundObjectsText.SetText("Find The 5 Missing Ship Parts, Found " + PickupSword.foundObjects.ToString() + " Out Of 4.");
+        }
     }
     private void Hp()
     {
@@ -158,7 +171,8 @@ public class PlayerBehaviour : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = speed * 2;
-        } else if (Input.GetKeyUp(KeyCode.LeftShift)) 
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             speed = speed / 2;
         }
@@ -184,7 +198,7 @@ public class PlayerBehaviour : MonoBehaviour
             jump.Play();
         }
 
-        
+
 
         if (direction.magnitude >= 0.1f)
         {
@@ -220,11 +234,11 @@ public class PlayerBehaviour : MonoBehaviour
             }
         }
     }
-    
+
     private void CamMovement()
     {
-        
-        if (Input.GetKeyDown(KeyCode.L)) 
+
+        if (Input.GetKeyDown(KeyCode.L))
         {
             cincamera.SetActive(true);
             maincamera.SetActive(false);
@@ -235,7 +249,7 @@ public class PlayerBehaviour : MonoBehaviour
             maincamera.SetActive(true);
         }
     }
-    
+
 
     public void LockCursor(bool IsActive)
     {
@@ -243,7 +257,7 @@ public class PlayerBehaviour : MonoBehaviour
         {
             Cursor.lockState = CursorLockMode.Locked;
         }
-        else if (IsActive == false) 
+        else if (IsActive == false)
         {
             Cursor.lockState = CursorLockMode.None;
         }

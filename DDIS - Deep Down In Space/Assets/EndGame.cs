@@ -30,7 +30,7 @@ public class EndGame : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 //Debug.Log(PickupSword.foundObjects);
-                if (PickupSword.foundObjects >= 9)
+                if (PickupSword.foundObjects >= 4)
                 {
                     Debug.Log("End Scene");
 

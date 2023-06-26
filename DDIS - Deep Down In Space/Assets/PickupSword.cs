@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,13 +16,14 @@ public class PickupSword : MonoBehaviour
 
     public AudioSource PickupSound;
 
+
     // Start is called before the first frame update
     void Start()
     {
         Pickuptext.SetActive(false);
         swordOnPlayer.SetActive(false);
 
-        foundObjects = 0;
+        foundObjects = -1;
     }
 
 
@@ -33,10 +35,11 @@ public class PickupSword : MonoBehaviour
 
             if (Input.GetKey(KeyCode.E))
             {
-                particle.Play();
-                PickupSound.Play();
+                Debug.Log("Picked Up Object");
+                //particle.Play();
+                //PickupSound.Play();
+                AddFoundObject();
                 this.gameObject.SetActive(false);
-
                 swordOnPlayer.SetActive(true);
             }
         }
@@ -52,5 +55,11 @@ public class PickupSword : MonoBehaviour
             foundObjects += 1;
            // Debug.Log(foundObjects);
         }
+    }
+    private void AddFoundObject()
+    {
+
+    foundObjects += 1;
+
     }
 }
