@@ -146,10 +146,10 @@ MonoBehaviour:
     m_Value: 1
   gaussianStart:
     m_OverrideState: 1
-    m_Value: 201.2
+    m_Value: 200
   gaussianEnd:
     m_OverrideState: 1
-    m_Value: 160.7
+    m_Value: 160
   gaussianMaxRadius:
     m_OverrideState: 1
     m_Value: 0.5
@@ -188,11 +188,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 1
   lift:
-    m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.11121402}
+    m_OverrideState: 0
+    m_Value: {x: 1, y: 1, z: 1, w: -0.018535685}
   gamma:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: -0.47265998}
+    m_Value: {x: 1, y: 1, z: 1, w: -0.13901775}
   gain:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 1, z: 1, w: 0.3614457}
+    m_Value: {x: 1, y: 1, z: 1, w: 0.37998137}
