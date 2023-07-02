@@ -4,7 +4,10 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using TMPro;
 using Unity.VisualScripting;
+//using UnityEditor.ShaderGraph;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using static UnityEngine.ParticleSystem;
 //using UnityEngine.UIElements;
@@ -15,7 +18,8 @@ public class PlayerBehaviour : MonoBehaviour
     public Transform cam;
 
     //movement stuff
-    public float speed = 6f;
+    [SerializeField]
+    private float speed = 6f;
     public float rotSpeed = 5f;
     public float gravity = -9.81f;
     public float jumpHeight = 3f;
@@ -58,28 +62,25 @@ public class PlayerBehaviour : MonoBehaviour
     public TMP_Text FoundObjectsText;
 
 
-
-
     // Update is called once per frame
     private void Start()
     {
         healthBar.SetMaxHealth(GameManager.gameManager.playerHealth.MaxHealth);
         rb = GetComponent<Rigidbody>();
-
-
     }
     void Update()
     {
-        moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
-
-        float movespeed = controller.velocity.magnitude;
-        //Debug.Log(movespeed);
-        // Debug.Log(movespeed);
-
-        Cursor.lockState = CursorLockMode.Locked;
+        StartGame();
         Hp();
         PlayerMovement();
+        AnimationsAndSound();
         CamMovement();
+    }
+    private void StartGame()
+    {
+        moveSpeed = new Vector2(this.velocity.x, this.velocity.z);
+
+        Cursor.lockState = CursorLockMode.Locked;
 
         if (Input.GetKey(KeyCode.LeftControl))
         {
@@ -92,17 +93,14 @@ public class PlayerBehaviour : MonoBehaviour
             Cursor.lockState = CursorLockMode.None;
 
         }
-        animator.SetFloat("Speed", movespeed);
-        if (movespeed > 0 && particles.isPlaying == false)
+        if (PickupSword.foundObjects <= 6)
         {
-            Debug.Log("RunParticle");
-            particles.Play();
+            FoundObjectsText.SetText($"Find The 4 Missing Ship Parts, Found {PickupSword.foundObjects} Out Of 4.");
         }
-        else if (particles.isPlaying)
-        {
-           // particles.Stop();
-        }
-
+    }
+    private void AnimationsAndSound()
+    {
+        float movespeed = controller.velocity.magnitude;
         if (fastFootsteps.isPlaying == false && footsteps.isPlaying == false && isGrounded)
         {
             if (movespeed > 11)
@@ -116,10 +114,11 @@ public class PlayerBehaviour : MonoBehaviour
 
             }
         }
-       
-        if (PickupSword.foundObjects <= 6)
+        animator.SetFloat("Speed", movespeed);
+        if (movespeed > 0 && !particles.isPlaying)
         {
-            FoundObjectsText.SetText("Find The 5 Missing Ship Parts, Found " + PickupSword.foundObjects.ToString() + " Out Of 4.");
+            Debug.Log("RunParticle");
+            particles.Play();
         }
     }
     private void Hp()
@@ -130,10 +129,6 @@ public class PlayerBehaviour : MonoBehaviour
         if (healthDisplay != null)
         {
             healthDisplay.SetText(currentHealth + " / " + currentMaxHealth);
-        }
-        if (GameManager.gameManager.playerHealth.Health == null)
-        {
-
         }
 
         if (Input.GetKeyDown(KeyCode.Y))
@@ -158,16 +153,13 @@ public class PlayerBehaviour : MonoBehaviour
         GameManager.gameManager.playerHealth.HealUnit(healing);
 
         healthBar.SetHealth(GameManager.gameManager.playerHealth.Health);
-
     }
     public void DestroyUnit()
     {
         Destroy(gameObject);
-
     }
     private void PlayerMovement()
     {
-
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             speed = speed * 2;
@@ -198,8 +190,6 @@ public class PlayerBehaviour : MonoBehaviour
             jump.Play();
         }
 
-
-
         if (direction.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
@@ -210,31 +200,8 @@ public class PlayerBehaviour : MonoBehaviour
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
-
-
-            //Debug.Log("float is " + animator.GetFloat("Speed"));
-            if (movespeed < 7)
-            {
-                //animator.SetTrigger("Walk");
-                animator.GetFloat("Speed");
-                //animator.SetFloat("Speed", 1.1);
-
-            }
-            else if (movespeed > 7)
-            {
-                //animator.SetTrigger("Run");
-                animator.GetFloat("Speed");
-                //animator.SetFloat("Speed", 2);
-            }
-            else
-            {
-                //animator.SetTrigger("Idle");
-                animator.GetFloat("Speed");
-                //animator.SetFloat("Speed", 0);
-            }
         }
     }
-
     private void CamMovement()
     {
 
@@ -249,8 +216,6 @@ public class PlayerBehaviour : MonoBehaviour
             maincamera.SetActive(true);
         }
     }
-
-
     public void LockCursor(bool IsActive)
     {
         if (IsActive)

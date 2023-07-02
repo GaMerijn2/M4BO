@@ -24,6 +24,7 @@ public class EnemyAiTutorial : MonoBehaviour
     public float timeBetweenAttacks;
     bool alreadyAttacked;
     public GameObject projectile;
+    public bool playerHit;
 
     //States
     public float sightRange, attackRange;
@@ -37,18 +38,18 @@ public class EnemyAiTutorial : MonoBehaviour
     public float attackCooldown = 1f;
 
     public Animator anim;
+    public Animator playerAnim;
 
     private void Start()
     {
         //maxHealth = 100;
         health = 100;
+        playerHit = false;
     }
     private void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
-
-      //  healthBar.SetMaxHealth(health);
     }
 
 
@@ -77,6 +78,8 @@ public class EnemyAiTutorial : MonoBehaviour
             AttackPlayer();
             transform.LookAt(player);
         }
+        float movespeed = agent.velocity.magnitude;
+        anim.SetFloat("Speed", movespeed);
     }
 
     private void Patroling()
@@ -118,29 +121,28 @@ public class EnemyAiTutorial : MonoBehaviour
 
         if (!alreadyAttacked)
         {
-            ///Attack code here
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
             anim.SetBool("Attacks", true);
             Debug.Log("set anim");
 
-            // Loop through all potential targets
             foreach (Collider collider in hitColliders)
             {
-                // Check if the target has a specific tag, such as "Player"
                 if (collider.CompareTag("Player"))
                 {
-                    // Apply damage or trigger desired gameplay effect on the target
+                    playerAnim.SetBool("Hit", true);
+                    Debug.Log("Hit Animation");
                     collider.gameObject.GetComponent<PlayerBehaviour>().PlayerTakeDmg(5);
                 }
                 if (GameManager.gameManager.playerHealth.Health <= 0)
                 {
+                    playerAnim.SetBool("Death", true);
                     Cursor.lockState = CursorLockMode.None;
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
                 }
             }
-            ///End of attack code
 
             alreadyAttacked = true;
+
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
@@ -150,6 +152,8 @@ public class EnemyAiTutorial : MonoBehaviour
         anim.SetBool("Attacks", false);
 
         alreadyAttacked = false;
+        playerAnim.SetBool("Hit", false);
+
     }
 
     public void EnemyTakeDmg(int dmg)
