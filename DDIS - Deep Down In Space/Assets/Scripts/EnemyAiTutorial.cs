@@ -137,7 +137,7 @@ public class EnemyAiTutorial : MonoBehaviour
                 {
                     playerAnim.SetBool("Death", true);
                     Cursor.lockState = CursorLockMode.None;
-                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                    Invoke(nameof(DeathScreen), 1);
                 }
             }
 
@@ -154,6 +154,10 @@ public class EnemyAiTutorial : MonoBehaviour
         alreadyAttacked = false;
         playerAnim.SetBool("Hit", false);
 
+    }
+    private void DeathScreen()
+    {
+        SceneManager.LoadScene("DeathMenu");
     }
 
     public void EnemyTakeDmg(int dmg)
