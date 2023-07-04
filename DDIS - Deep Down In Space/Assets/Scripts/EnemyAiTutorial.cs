@@ -52,6 +52,7 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+
     }
 
 
