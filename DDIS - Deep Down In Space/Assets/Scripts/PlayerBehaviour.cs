@@ -151,6 +151,16 @@ public class PlayerBehaviour : MonoBehaviour
         //HitColor();
         healthBar.SetHealth(GameManager.gameManager.playerHealth.Health);
     }
+    public void PlayerHitAnim()
+    {
+        animator.SetBool("Hit", true);
+        Invoke(nameof(ResetPlayerHitAnim), 0.3f);
+    }
+    private void ResetPlayerHitAnim()
+    {
+        animator.SetBool("Hit", false);
+
+    }
     private void HitColor()
     {
         vg.color.Override(Color.red);
