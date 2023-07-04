@@ -61,6 +61,9 @@ public class PlayerBehaviour : MonoBehaviour
 
     public TMP_Text FoundObjectsText;
 
+    [SerializeField] private Volume PostProcessVolume;
+    private Vignette vg;
+
 
     // Update is called once per frame
     private void Start()
@@ -145,8 +148,29 @@ public class PlayerBehaviour : MonoBehaviour
     public void PlayerTakeDmg(int dmg)
     {
         GameManager.gameManager.playerHealth.DmgUnit(dmg);
-
+        //HitColor();
         healthBar.SetHealth(GameManager.gameManager.playerHealth.Health);
+    }
+    public void PlayerHitAnim()
+    {
+        animator.SetBool("Hit", true);
+        Invoke(nameof(ResetPlayerHitAnim), 0.3f);
+    }
+    private void ResetPlayerHitAnim()
+    {
+        animator.SetBool("Hit", false);
+
+    }
+    private void HitColor()
+    {
+        vg.color.Override(Color.red);
+        vg.intensity.Override(1);
+        Invoke(nameof(ResetHitColor), 0.5f);
+    }
+    private void ResetHitColor()
+    {
+        vg.color.Override(Color.black);
+        vg.intensity.Override(0.01f);
     }
     private void PlayerHeal(int healing)
     {

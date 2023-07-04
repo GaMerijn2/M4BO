@@ -39,6 +39,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Animator anim;
     public Animator playerAnim;
+    //private PlayerBehaviour playerBehaviour;
+     public PlayerBehaviour Name = new PlayerBehaviour();
 
     private void Start()
     {
@@ -129,15 +131,16 @@ public class EnemyAiTutorial : MonoBehaviour
             {
                 if (collider.CompareTag("Player"))
                 {
-                    playerAnim.SetBool("Hit", true);
-                    Debug.Log("Hit Animation");
+                    //playerAnim.SetBool("Hit", true);
+                    // Debug.Log("Hit Animation");
+                    Name.PlayerHitAnim();
                     collider.gameObject.GetComponent<PlayerBehaviour>().PlayerTakeDmg(5);
                 }
                 if (GameManager.gameManager.playerHealth.Health <= 0)
                 {
                     playerAnim.SetBool("Death", true);
                     Cursor.lockState = CursorLockMode.None;
-                    //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+                    Invoke(nameof(DeathScreen), 1);
                 }
             }
 
@@ -152,8 +155,12 @@ public class EnemyAiTutorial : MonoBehaviour
         anim.SetBool("Attacks", false);
 
         alreadyAttacked = false;
-        playerAnim.SetBool("Hit", false);
+        //playerAnim.SetBool("Hit", false);
 
+    }
+    private void DeathScreen()
+    {
+        SceneManager.LoadScene("DeathMenu");
     }
 
     public void EnemyTakeDmg(int dmg)
