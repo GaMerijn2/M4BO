@@ -1,4 +1,5 @@
 ﻿
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.SceneManagement;
@@ -39,6 +40,8 @@ public class EnemyAiTutorial : MonoBehaviour
 
     public Animator anim;
     public Animator playerAnim;
+
+    public AudioSource attackSound;
     //private PlayerBehaviour playerBehaviour;
      public PlayerBehaviour Name = new PlayerBehaviour();
 
@@ -52,9 +55,9 @@ public class EnemyAiTutorial : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        Name = player.GetComponent<PlayerBehaviour>();
 
     }
-
 
     private void FixedUpdate()
     {
@@ -126,6 +129,7 @@ public class EnemyAiTutorial : MonoBehaviour
         {
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, attackRange);
             anim.SetBool("Attacks", true);
+            attackSound.PlayOneShot(attackSound.clip);
             Debug.Log("set anim");
 
             foreach (Collider collider in hitColliders)
@@ -140,6 +144,7 @@ public class EnemyAiTutorial : MonoBehaviour
                 if (GameManager.gameManager.playerHealth.Health <= 0)
                 {
                     playerAnim.SetBool("Death", true);
+                    SceneManager.LoadScene("DeathMenu");
                     Cursor.lockState = CursorLockMode.None;
                     Invoke(nameof(DeathScreen), 1);
                 }
@@ -161,6 +166,7 @@ public class EnemyAiTutorial : MonoBehaviour
     }
     private void DeathScreen()
     {
+        Debug.Log("Deadscreen");
         SceneManager.LoadScene("DeathMenu");
     }
 

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CheckHitBox : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider col)
     {
         col.gameObject.CompareTag("Enemy");
@@ -20,8 +19,9 @@ public class CheckHitBox : MonoBehaviour
         }
         if (col.gameObject.tag == "Enemy" && col.gameObject.GetComponent<EnemyAiTutorial>().health <= 0)
         {
-            col.gameObject.GetComponent<EnemyAiTutorial>().DestroyUnit();
             GameManager.gameManager.playerHealth.HealUnit(20);
+            col.gameObject.GetComponent<EnemyAiTutorial>().DestroyUnit();
+            
         }
 
 
